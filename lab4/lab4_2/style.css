@@ -1,0 +1,43 @@
+
+body {
+    margin: 0;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 20px;
+}
+nav {
+    background-color: #555;
+    padding: 10px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+table {
+    margin: 30px auto;
+    border-collapse: collapse;
+}
+td {
+    padding: 10px;
+}
+img {
+    width: 150px;
+    height: 150px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+footer {
+    margin-top: 40px;
+    padding: 15px;
+    background-color: #333;
+    color: white;
+}
