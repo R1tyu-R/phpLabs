@@ -299,24 +299,16 @@ function usortAmount($a, $b): int
             <th> Id</th>
             <th> Description</th>
         </tr>
-        <?php
-        foreach (findTransactionByDescription("Купили") as $trans) {
-        ?>
+        <?php foreach (findTransactionByDescription("Купили") as $trans) { ?>
             <tr>
                 <th>
-                    <?php
-                    echo " " . $trans['id'];
-                    ?>
+                    <?php echo " " . $trans['id']; ?>
                 </th>
                 <th>
-                    <?php
-                    echo " " . $trans['description'];
-                    ?>
+                    <?php echo " " . $trans['description']; ?>
                 </th>
             </tr>
-        <?php
-        }
-        ?>
+        <?php } ?>
     </table>
 
     <h3>
@@ -418,6 +410,6 @@ function usortAmount($a, $b): int
     </table>
     <br />
 
-    </body>
+</body>
 
 </html>
