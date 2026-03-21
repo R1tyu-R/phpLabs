@@ -13,6 +13,10 @@ class Transaction
         private string $merchant
     ) {}
 
+    /**
+     * Метод, возвращающий количество дней, прошедших с даты транзакции
+     * @return int - количество дней с даты транзакции 
+     */
     public function getDaysSinceTransaction(): int
     {
         $tz = ini_get('date.timezone');
@@ -21,22 +25,43 @@ class Transaction
         $transactionDate = new DateTime($this->date, $dtz);
         return $transactionDate->diff($currentDate)->days;
     }
+    /**
+     * Метод, возвращающий id транзакции 
+     * @return int 
+     */
     public function getId(): int
     {
         return $this->id;
     }
+    /**
+     * Метод, возвращающий дату транзакции  
+     * @return string 
+     */
     public function getDate(): string
     {
         return $this->date;
     }
+    /**
+     * Метод, возвращающий стоимость транзакции  
+     * @return float 
+     */
     public function getAmount(): float
     {
         return $this->amount;
     }
+    /**
+     * Метод, возвращающий описание транзакции 
+     * @return string 
+     */
     public function getDescription(): string
     {
         return $this->description;
     }
+    
+    /**
+     * Метод, возвращающий название торговца 
+     * @return string  
+     */
     public function getMerchant(): string
     {
         return $this->merchant;
@@ -46,10 +71,23 @@ class Transaction
 class TransactionRepository implements TransactionStorageInterface
 {
     private array $transactions = [];
+
+    /**
+     * Метод, добавляет новую транзакцию
+     * @param array $transaction - массив с транзакциями
+     * @return void  
+     */
     public function addTransaction(Transaction $transaction): void
     {
         $this->transactions[] = $transaction;
     }
+
+    
+    /**
+     * Метод, добавляет новую транзакцию
+     * @param array $transaction - массив с транзакциями
+     * @return void  
+     */
     public function removeTransactionById(int $id): void
     {
         foreach ($this->transactions as $num => $transaction) {
@@ -58,11 +96,21 @@ class TransactionRepository implements TransactionStorageInterface
             }
         }
     }
+    
+    /**
+     * Метод, возвращает массив всех транзакций 
+     * @return array - массив с транзакциями 
+     */
     public function getAllTransactions(): array
     {
         return $this->transactions;
     }
 
+    /**
+     * Метод, ищет транзакцию по id 
+     * @param int $id - id транзакции, которую мы ищем 
+     * @return Transaction - объект транзакции, с заданым id 
+     */
     public function findById(int $id): ?Transaction
     {
         foreach ($this->transactions as $transaction) {
@@ -78,6 +126,10 @@ class TransactionManager
 {
     public function __construct(private TransactionStorageInterface  $repository) {}
 
+    /**
+     * Метод, считает общую сумму транзакций
+     * @return float - сумма всех транзакций  
+     */
     public function calculateTotalAmount(): float
     {
         $totalAmount = 0;
@@ -86,7 +138,12 @@ class TransactionManager
         }
         return $totalAmount;
     }
-
+    /**
+     * Метод, считает общую сумму транзакций в определенный период времени 
+     * @param string  $startDate - стартовая дата интервала 
+     * @param string  $endDate - конечная дата интервала 
+     * @return float - сумма всех транзакций  за интервал времени 
+     */
     public function calculateTotalAmountByDateRange(string $startDate, string $endDate): float
     {
         $startDate = new DateTime($startDate);
@@ -100,7 +157,11 @@ class TransactionManager
         }
         return $totalAmount;
     }
-
+    /**
+     * Метод, считает количество транзакций у определенного торговца  
+     * @param string  $merchant - название продавца 
+     * @return int - количество транзакций 
+     */
     public function countTransactionsByMerchant(string $merchant): int
     {
         $numOfMerchantTransactions = 0;
@@ -111,7 +172,10 @@ class TransactionManager
         }
         return $numOfMerchantTransactions;
     }
-
+    /**
+     * Метод, сортирует массив по дате 
+     * @return array - сортированный массив 
+     */
     public function sortTransactionsByDate(): array // сортировка по дате 
     {
         $transactions  = $this->repository->getAllTransactions();
@@ -127,7 +191,10 @@ class TransactionManager
         });
         return $transactions;
     }
-
+    /**
+     * Метод, сортирует массив по сумме ( в убывании) 
+     * @return array - массив с транзакциями 
+     */
     public function sortTransactionsByAmountDesc(): array
     // сортировку транзакций по сумме по убыванию
     {
@@ -148,6 +215,11 @@ class TransactionManager
 
 final class TransactionTableRenderer
 {
+    /**
+     * Метод, генерирует таблицу с транзакциями (html)  
+     * @param array $transactions - массив с транзакциями 
+     * @return string - строка с таблицей html 
+     */
     public function render(array $transactions): string
     {
         ob_start();
