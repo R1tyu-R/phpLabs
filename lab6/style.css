@@ -1,0 +1,99 @@
+body {
+    margin: 0;
+    font-family: Arial;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+/* Левая часть */
+.left {
+    width: 70%;
+    padding: 20px;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    gap: 10px;
+}
+
+.tab {
+    padding: 10px 20px;
+    border: 2px solid black;
+    text-decoration: none;
+    color: black;
+}
+
+.tab.active {
+    background: lightgray;
+}
+
+/* Таблица */
+.table {
+    margin-top: 20px;
+}
+
+.row {
+    padding: 15px;
+    border-bottom: 2px solid black;
+}
+
+/* Кнопка */
+.add-button {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background: green;
+    display: block;
+}
+
+/* Панель формы */
+.form-panel {
+    position: absolute;
+    right: -400px;
+    top: 0;
+    width: 400px;
+    height: 100%;
+    background: #f2f2f2;
+    padding: 20px;
+    transition: 0.3s;
+}
+
+.form-panel.open {
+    right: 0;
+}
+
+/* Форма */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, select, textarea {
+    padding: 8px;
+}
+
+textarea {
+    height: 80px;
+}
+
+button {
+    padding: 10px;
+    background: black;
+    color: white;
+    border: none;
+}
+
+.close-btn {
+    text-align: center;
+    margin-top: 10px;
+    display: block;
+    text-decoration: none;
+}
