@@ -1,41 +1,24 @@
-<?php
-$isFormOpen = isset($_GET['form']) && $_GET['form'] === 'open';
-?>
 
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Books Catalog</title>
+    <title>Главная</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <div class="container">
 
-    <!-- Левая часть -->
-    <div class="left">
-
-        <div class="tabs">
-            <a href="#" class="tab active">прочитала</a>
-            <a href="#" class="tab">в библиотеке</a>
-            <a href="#" class="tab">хочу купить</a>
-        </div>
-
-        <div class="table">
-            <div class="row">Книга 1</div>
-            <div class="row">Книга 2</div>
-            <div class="row">Книга 3</div>
-        </div>
-
+    <div class="nav">
+        <a href="index.php">Главная</a>
+        <a href="subMenus/library.php">Моя библиотека</a>
+        <a href="subMenus/wishlist .php">Желаемое</a>
+        <a href="subMenus/form.php">Добавить</a>
     </div>
 
-    <!-- Кнопка -->
-    <a href="?form=open" class="add-button"></a>
-
-    <!-- Форма -->
-    <div class="form-panel <?php echo $isFormOpen ? 'open' : ''; ?>">
-        <?php include 'form.php'; ?>
+    <div class="content">
+        <h2>Добро пожаловать в каталог книг </h2>
     </div>
 
 </div>
