@@ -62,17 +62,16 @@
 <body>
     <?php
     date_default_timezone_set('Europe/Chisinau');
-    $date = date("N");
-    $worcableDay =  [[1, 3, 5], [2, 4, 6]];
-    function workableDate(int $num): string
+    function workableDate(int $weekNumber): string
     {
-        global $date;
-        global $worcableDay;
-        if (!in_array($date, $worcableDay[$num])) {
+        $date = date("N");
+        $worcableDay =  [[1, 3, 5], [2, 4, 6]];
+        
+        if (!in_array($date, $worcableDay[$weekNumber])) {
             return "Нерабочий день";
-        } else {
-            return $num = 0 ? "8:00-12:00" : "12:00-16:00";
         }
+
+        return $weekNumber = 0 ? "8:00-12:00" : "12:00-16:00";
     }
     ?>
 
@@ -114,7 +113,7 @@
 
     function setDefault()
     {
-        return [0,0,0];
+        return [0, 0, 0];
     }
     ?>
     <ul>
@@ -138,18 +137,17 @@
 
     <ul>
         <?php
-        [$a,$b,$iteration] = setDefault();
-        while ( $iteration <= 5) 
-        {
+        [$a, $b, $iteration] = setDefault();
+        while ($iteration <= 5) {
             $a += 10;
-            $b += 5; 
+            $b += 5;
             $iteration++;   ?>
             <li>
                 <?php echo "a: " . $a . " b: " . $b; ?>
             </li>
         <?php
         }
-        
+
         ?>
     </ul>
     <p>
@@ -160,20 +158,19 @@
 
     <h2>Цикл do while </h2>
 
-    
+
     <ul>
         <?php
-        [$a,$b,$iteration] = setDefault();
-        do
-        {
+        [$a, $b, $iteration] = setDefault();
+        do {
             $a += 10;
-            $b += 5; 
+            $b += 5;
             $iteration++;   ?>
             <li>
                 <?php echo "a: " . $a . " b: " . $b; ?>
             </li>
         <?php
-        }while ( $iteration <= 5) ;
+        } while ($iteration <= 5);
         ?>
     </ul>
     <p>

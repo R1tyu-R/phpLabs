@@ -262,4 +262,4 @@ interface TransactionStorageInterface
 
 ## Библиография
 - [moodle](https://elearning.usm.md/course/view.php?id=7161)
-- [Создаем динамические веб-сайты с помощью PHP, MySQL, JavaScript, CSS](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://booster.by/files/oeu.pdf)
+- [Создаем динамические веб-сайты с помощью PHP, MySQL, JavaScript, CSS](https://librarius.md/ru/book/sozdaem-dinamicheskie-veb-sayty-s-pomoschiyu-php-mysql-javascript-css-i-html5-761694)
